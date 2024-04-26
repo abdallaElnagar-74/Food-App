@@ -17,7 +17,7 @@
                       </ngx-dropzone-image-preview>
                      </ngx-dropzone>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <!-- username  -->
                         <div class="input-group flex-nowrap mb-1 mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-user"></i></span>
@@ -25,7 +25,7 @@
                           </div>
                           <p class="text-danger" *ngIf="registerForm.get('userName')?.getError('required')&&registerForm.get('userName')?.touched">User Name is Requird</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <!-- email  -->
                         <div class="input-group flex-nowrap mb-1 mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-envelope"></i></span>
@@ -34,7 +34,7 @@
                           <p class="text-danger" *ngIf="registerForm.get('email')?.getError('email')">Email not Valid</p>
                           <p class="text-danger" *ngIf="registerForm.get('email')?.getError('required')&&registerForm.get('email')?.touched">Email is Required</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <!-- country  -->
                         <div class="input-group flex-nowrap mb-1 mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-earth-americas"></i></span>
@@ -42,7 +42,7 @@
                           </div>
                           <p class="text-danger" *ngIf="registerForm.get('country')?.getError('required')&&registerForm.get('country')?.touched">Country Name is Required</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <!-- phone -->
                         <div class="input-group flex-nowrap mb-1 mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-mobile-screen-button"></i></span>
@@ -51,7 +51,7 @@
                           <p class="text-danger" *ngIf="registerForm.get('phoneNumber')?.getError('required')&&registerForm.get('phoneNumber')?.touched">Phone is Required</p>
                           <p class="text-danger" *ngIf="registerForm.get('phoneNumber')?.getError('pattern')">Not Valid Phone Number</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <!-- pass -->
                         <div class="input-group flex-nowrap mb-1 mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-lock"></i></span>
@@ -62,7 +62,7 @@
                           </div>
                           <p class="text-danger" *ngIf="registerForm.get('password')?.getError('required')&&registerForm.get('password')?.touched">Password is Required</p>
                         </div>
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <!-- rePass -->
                         <div class="input input-group flex-nowrap mb-1 mt-3">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-lock"></i></span>
@@ -71,12 +71,12 @@
                             </div>
                         </div>
                         <p class="text-danger" *ngIf="registerForm.get('confirmPassword')?.getError('required')&&registerForm.get('confirmPassword')?.touched">confirm Password is Required</p>
-                        <p class="text-danger" *ngIf="registerForm.get('confirmPassword')?.getError('compare')">Password Not match</p>
+                        <p class="text-danger" *ngIf="registerForm.get('confirmPassword')?.getError('compare')&&registerForm.get('confirmPassword')?.value!=''">Password Not match</p>
                     </div>
         </div>
                 <div class="d-flex justify-content-between mt-3">
                     <a href="" class="text-end" routerLink="/auth/login">Login Now?</a>
-                    <button class="dibuton" (click)="openDialog('500ms', '250ms')" type="button">Verify Now</button>
+                    <button class="dibuton" (click)="Data(registerForm.get('email')?.value,'500ms', '250ms')" type="button">Verify Now</button>
                 </div>
                 <button class="buton mt-4 rounded-2 w-50 d-block mx-auto">Register <i *ngIf="loading" class="fa-solid fa-spinner fa-spin-pulse text-white"></i></button>
             </form>

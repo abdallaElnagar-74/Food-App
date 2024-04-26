@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { DialogRef } from '@angular/cdk/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-verify',
@@ -10,10 +11,12 @@ import { DialogRef } from '@angular/cdk/dialog';
   styleUrls: ['./verify.component.scss']
 })
 export class VerifyComponent {
-  constructor(private _AuthService:AuthService,private _FormBuilder:FormBuilder,private _ToastrService:ToastrService,private _DialogRef:DialogRef){}
+  constructor(private _AuthService:AuthService,private _FormBuilder:FormBuilder,private _ToastrService:ToastrService,private _DialogRef:DialogRef,
+    @Inject(MAT_DIALOG_DATA)public data:any
+  ){}
   loading:boolean = false
   verifyForm = new FormGroup ({
-    email : new FormControl(''),
+    email : new FormControl(this.data.email),
     code : new FormControl('')
   })
   verify(){

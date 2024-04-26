@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <p class="text-danger" *ngIf="resetPassForm.get('confirmPassword')?.getError('required')&&resetPassForm.get('confirmPassword')?.touched">confirmPassword is required</p>
-                    <p class="text-danger" *ngIf="resetPassForm.get('confirmPassword')?.getError('compare')">password not match</p>
+                    <p class="text-danger" *ngIf="resetPassForm.get('confirmPassword')?.getError('compare')&&resetPassForm.get('confirmPassword')?.value!=''">password not match</p>
 
                      <button class="buton rounded-2 mt-3">Reset Password <i class="fa-solid fa-spinner fa-spin text-white" *ngIf="loading"></i></button>
             </form>

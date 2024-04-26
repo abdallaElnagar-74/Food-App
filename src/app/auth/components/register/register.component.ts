@@ -47,6 +47,7 @@ if(!this.loading){
   this.loading=true
   this._AuthService.handleRegister(data.value).subscribe({
     next:res=>{
+      this.Data(this.registerForm.value,'500ms', '250ms')
       this.loading = false
       console.log(res);
       this._ToastrService.success(res.message)
@@ -59,7 +60,14 @@ if(!this.loading){
   })
 
 }
-
+}
+Data(inputs:object,enterAnimationDuration: string, exitAnimationDuration: string){
+  this.dialog.open(VerifyComponent,{
+    width: '500px',
+    enterAnimationDuration,
+    exitAnimationDuration,
+    data:inputs
+  });
 }
 files: File[] = [];
 onSelect(event:any) {
