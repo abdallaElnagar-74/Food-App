@@ -1,0 +1,29 @@
+
+.card{
+    padding: 1rem;
+    border-radius: 16px;
+    h1{
+        font-size: 25px;
+        font-weight: 700;
+        color: #494949;
+    }
+    p{
+        color: rgba(73, 73, 73, 0.6);
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+i{
+    color: #8391A1;
+    cursor: pointer;
+}
+.buton{
+    color: white;
+    background-color: #4AA35A;
+    width: 100%;
+    outline: none;
+    border: unset;
+    padding: .5rem .3rem;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
