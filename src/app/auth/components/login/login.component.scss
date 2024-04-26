@@ -1,0 +1,50 @@
+section{
+    background-image: url(../../../../assets/images/bglogin.png);
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.links{
+    display: flex;
+    justify-content: space-between;
+a{
+    text-decoration: none;
+}
+.model{
+    font-size: 16px;
+    font-weight: 500;
+    color: #3A3A3D; 
+    background-color: transparent;
+    border: unset;
+}
+
+.second{
+    color: #4AA35A;
+    font-weight: 500;
+}
+}
+.card p{
+    font-size: 13px;
+}
+
+input{
+    background-color: #F7F7F7 !important;
+    padding-top: .5rem !important;
+    &:focus{
+        box-shadow: none;
+    }
+}
+
+.eyy{
+    inset-inline-end:1%;
+}
+.reset-btn{
+    transform: translateY(500%);
+}
+.btn-danger{
+    transition: all 2s;
+}
+.repos-btn{
+    transform: translateY(0);
+}

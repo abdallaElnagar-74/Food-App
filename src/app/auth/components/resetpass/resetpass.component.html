@@ -1,0 +1,52 @@
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+           <div class="card">
+            <div class="w-75 d-flex justify-content-center mx-auto"><img class="w-75" src="./assets/images/authlogo.svg" alt=""></div>
+            <h1 class="mt-2">Reset Password</h1>
+            <p>Please Enter Your Otp or Check Your Inbox</p>
+            <form action="" [formGroup]="resetPassForm" (ngSubmit)="resetPassword()" >
+                <!-- email  -->
+                <div class="input-group flex-nowrap mb-1">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span>
+                    <input formControlName="email" type="email" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <p class="text-danger" *ngIf="resetPassForm.get('email')?.getError('email')">email is invalid</p>
+                  <p class="text-danger" *ngIf="resetPassForm.get('email')?.getError('required')&&resetPassForm.get('email')?.touched">email is required</p>
+                       <!-- code  -->
+                       <div class="input-group mb-1 mt-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-shield-halved"></i></span>
+                          <input  formControlName="seed" type="text" class="form-control" placeholder="OTP" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      <p class="text-danger" *ngIf="resetPassForm.get('seed')?.getError('required')&&resetPassForm.get('seed')?.touched">code is required</p>
+
+                  <!-- password -->
+                  <div class="input-group mb-1 mt-3 flex-nowrap">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                      <div class="w-100 position-relative">
+                        <input formControlName="password" [type]="eye?'text':'password'" class="form-control" placeholder="New Password" aria-label="Username" aria-describedby="basic-addon1">
+                      <i class="fa-solid position-absolute  top-50 translate-middle-y" (click)="eye=!eye" [class]="eye?'fa-eye':'fa-eye-slash'"></i>
+                      </div>
+
+                    </div>
+                    <p class="text-danger" *ngIf="resetPassForm.get('password')?.getError('required')&&resetPassForm.get('password')?.touched">password is required</p>
+
+                    <!-- rePassword -->
+                    <div class="input-group mb-1 mt-3 flex-nowrap">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                        <div class="position-relative w-100">
+                            <input formControlName="confirmPassword" [type]="eyeLash?'text':'password'" class="form-control" placeholder="Confirm New Password" aria-label="Username" aria-describedby="basic-addon1">
+                        <i class="fa-solid position-absolute  top-50 translate-middle-y" (click)="eyeLash=!eyeLash" [class]="eyeLash?'fa-eye':'fa-eye-slash'"></i>
+                        </div>
+                    </div>
+                    <p class="text-danger" *ngIf="resetPassForm.get('confirmPassword')?.getError('required')&&resetPassForm.get('confirmPassword')?.touched">confirmPassword is required</p>
+                    <p class="text-danger" *ngIf="resetPassForm.get('confirmPassword')?.getError('compare')">password not match</p>
+
+                     <button class="buton rounded-2 mt-3">Reset Password <i class="fa-solid fa-spinner fa-spin text-white" *ngIf="loading"></i></button>
+            </form>
+           </div>
+            </div>
+        </div>
+    </div>
+</section>

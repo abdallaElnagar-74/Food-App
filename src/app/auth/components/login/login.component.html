@@ -1,0 +1,71 @@
+<section>
+    <div class="container">
+      <div class="row justify-content-center align-items-center vh-100">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="logo d-flex justify-content-center w-75 mx-auto">
+                      <img src="./assets/images/authlogo.svg" class="w-50" alt="">
+                  </div>
+                  <h1>Log In</h1>
+                  <p>Welcome Back! Please enter your details</p>
+                  <form action="" [formGroup]="loginForm" (ngSubmit)="login()">
+                    <!-- email  -->
+                      <div class="input-group mb-1">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                          <input formControlName="email" type="email" class="form-control" placeholder="Enter your E-mail" aria-label="Email" aria-describedby="basic-addon1">
+                        </div>                      
+                        <p class="text-danger" *ngIf="loginForm.get('email')?.getError('email')">email is invalid</p>
+                        <p class="text-danger" *ngIf="loginForm.get('email')?.getError('required')&&loginForm.get('email')&&loginForm.get('email')?.touched">email is required</p>
+                        <!-- password  -->
+                      <div class="input-group mt-3 mb-1 flex-nowrap">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                          <div class="w-100 position-relative">
+                            <input formControlName="password" [type]="inptype()" class="form-control" placeholder="password" aria-label="Password" aria-describedby="basic-addon1">
+                          <span class="position-absolute top-50 translate-middle-y eyy"><i class="fa-regular fa-eye" (click)="changeeye()" *ngIf="eye==false"></i></span>
+                          <span class="position-absolute top-50 translate-middle-y eyy"><i class="fa-regular fa-eye-slash" (click)="changeeye()" *ngIf="eye"></i></span>
+                          </div>
+                      </div>   
+                      <p class="text-danger" *ngIf="loginForm.get('password')?.getError('required')&&loginForm.get('password')&&loginForm.get('password')?.touched">password is required</p>         
+                      <div class="links mt-3">
+                          <a href="" class="first" routerLink="/auth/register">Register Now?</a>
+                          <button type="button" class="model" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                           Forget Password?
+                          </button>
+                      </div> 
+                      <button class="rounded-2 mt-3 buton" type="submit">Login <i *ngIf="loading" class="fa-solid fa-spinner text-white fa-spin"></i></button>         
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="row justify-content-center">
+          <div class="card d-flex flex-column align-items-center">
+              <div class="w-50 d-flex justify-content-center mx-auto"><img src="./assets/images/authlogo.svg" class="w-100" alt=""></div>
+              <div class="col-md-12 mt-2">
+                  <h1>Forget Your Password?</h1>
+                  <p class="">No worries! Please enter your email and we will send a password reset link</p>
+              <form action="" [formGroup]="forgetForm" (ngSubmit)="handleForgetPass()">
+                <div class="input-group my-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span>
+                    <input #mail formControlName="email" type="text" class="form-control" placeholder="Enter your email" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <p [class]="good?'text-success':'text-danger'" class="">{{msg}}</p>
+                  <div class=" overflow-hidden"><button (click)="handleValue(mail);openDialog('500ms', '250ms')" data-bs-dismiss="modal" class="btn btn-danger d-block mx-auto" [class]="reset?'repos-btn':'reset-btn'" type="button" >Reset your Password</button></div>
+                  <button type="submit" class="buton text-center rounded-2 mt-5">Submit <i class="fa-solid fa-spinner fa-spin text-white" *ngIf="floading"></i></button>
+             </form>
+          </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

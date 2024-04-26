@@ -1,0 +1,10 @@
+input{
+    background-color: #F7F7F7 !important;
+    padding-top: .5rem !important;
+    &:focus{
+        box-shadow: none;
+    }
+}
+.title{
+    font-size: 20px;
+}
