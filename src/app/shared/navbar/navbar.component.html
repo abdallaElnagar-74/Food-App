@@ -1,0 +1,44 @@
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary rounded-3 mt-4">
+    <div class="container">
+        <form class="d-flex w-50" role="search">
+            <div class="w-100 search">
+              <input class="form-control me-2 position-relative" type="search" placeholder="Search Here" aria-label="Search">
+            </div>
+          </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-3 d-flex align-items-center">
+          <li class="nav-item me-2">
+           <div class="d-flex align-items-center justify-content-end" *ngIf="data">
+            <div class="w-50 d-flex justify-content-end foto me-2" ><img [src]="imgUrl+data.imagePath" class="w-100 rounded-circle" alt=""></div>
+            <span class="">Hello,{{data.userName}}</span>
+           </div>
+          </li>
+          <li class="nav-item">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>settings</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openUpdateDialog('700ms','350ms',data)">
+                <mat-icon>manage_accounts</mat-icon>
+                <span>Update Profile</span>
+              </button>
+              <button mat-menu-item (click)="openDialog('700ms','350ms')">
+                <mat-icon>update</mat-icon>
+                <span>Update Password</span>
+              </button>
+              <mat-divider></mat-divider>
+              <button mat-menu-item (click)="logOut()">
+                <mat-icon>logout</mat-icon>
+                <span>Log Out</span>
+              </button>
+            </mat-menu>
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

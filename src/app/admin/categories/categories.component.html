@@ -1,0 +1,89 @@
+<section>
+    <div class="title-page  p-3 rounded-4 mt-3">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-8">
+                    <h1 class="title">Categories <span>item</span></h1>
+                    <p>You can now add your items that any user can order it from <br> the Application and you can edit</p>
+                </div>
+                <div class="col-md-4 d-flex justify-content-end">
+                    <img src="./assets/images/Group 48102127.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" page-details mt-2">
+   <div class="row justify-content-between align-items-center">
+  <div class="col-md-6">
+    <div>
+        <h1 class="h4 m-0">Categories Table Details</h1>
+        <p class="">You can check all details</p>
+       </div>
+  </div>
+   <div class="col-md-6 d-flex justify-content-end">
+    <button class="buton w-25 rounded-2" (click)="openDialog(true);" >Add New Category</button>
+   </div>
+   </div>
+    </div>
+   <div class="">
+    <table class="table table-striped text-center mt-3">
+        <thead class="">
+            <th class="rounded-start-2">
+                No
+            </th>
+            <th >
+                Name
+            </th>
+            <th>
+                Creation Date
+            </th>
+            <th>
+                Modification Date
+            </th>
+            <th class="rounded-end-2">
+                Info
+            </th>
+        </thead>
+        <tbody class="mt-3">
+           <tr *ngFor="let item of data;let x = index">
+            <td>{{x+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.creationDate | date:'dd/mm/yy hh:mm a'}}</td>
+            <td>{{item.modificationDate | date:'dd/mm/yy hh:mm a'}}</td>
+            <td>
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" class="rounded-4 px-3">
+                <button mat-menu-item class="" (click)="openDialog2('500ms', '250ms',item.id)">
+                  <mat-icon class="text-success">visibility</mat-icon>
+                  <span>View</span>
+                </button>
+                <button mat-menu-item (click)="openDialog(false,item.id,item.name);">
+                  <mat-icon class="text-success">edit_square</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item (click)="openDeleteDialog('500ms', '250ms',item.id,'cat')">
+                  <mat-icon class="text-success" mat-raised-button>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </td>
+           </tr>
+        </tbody>
+    </table>
+   </div>
+<div class="d-flex justify-content-center">
+    <mat-paginator #paginator
+    class="demo-paginator"
+    (page)="handlePageEvent($event)"
+    [length]="listData.totalNumberOfRecords"
+    [pageSize]="pageSize" 
+    [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+    [hidePageSize]="hidePageSize"
+    [pageIndex]="pageNumber"
+    aria-label="Select page">
+</mat-paginator>
+</div>
+
+</section>

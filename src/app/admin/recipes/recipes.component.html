@@ -1,0 +1,127 @@
+<section>
+    <div class="title row justify-content-between align-items-center my-3 p-3 rounded-3">
+        <div class="top col-md-8">
+            <h1 class="p-0 m-0">Recipes <span>Items</span></h1>
+            <p class="mt-3">You can now add your items that any user can order it from <br> the Application and you can edit</p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-end">
+            <img src="./assets/images/Group 48102127.svg" alt="">
+        </div>
+    </div>
+    <div class="middle">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-md-8">
+                <div>
+                    <h1 class="m-0">Recipe Table Details</h1>
+                    <p>You can check all details</p>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+                <button class="btn btn-success px-3" routerLink="add">Add New Item</button>
+            </div>
+        </div>
+    </div>
+    <div class="table-data mt-3">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field class="example-form-field w-100" appearance="outline">
+                    <mat-label>Search Area</mat-label>
+                    <input matInput type="text" [(ngModel)]="searchValue" (keyup.enter)="getRecipes()">
+                    
+                      <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue='';getRecipes()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    
+                  </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Tag</mat-label>
+                    <mat-select  [(ngModel)]="tagId" (selectionChange)="getRecipes()">
+                      <!-- <mat-select-trigger>
+                        {{toppings.value?.[0] || ''}}
+                        <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                          (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger> -->
+                      <mat-option *ngFor="let item of tags" [value]="item.id">{{item.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Category</mat-label>
+                    <mat-select [(ngModel)]="categoryId" (selectionChange)="getRecipes()">
+                      <!-- <mat-select-trigger>
+                        {{toppings.value?.[0] || ''}}
+                        <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                          (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger> -->
+                      <mat-option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+        <table class="table text-center table-striped" *ngIf="recipeData">
+            <thead>
+                <th class="rounded-start-3">Item Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>tag</th>
+                <th>Category</th>
+                <th class="rounded-end-3">Info</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of recipeData">
+                    <td>{{item.name}}</td>
+                    <td class="w-25">
+                        <img class="w-25" [src]="item.imagePath?imgUrl+item.imagePath:emptyImg" alt="">
+                    </td>
+                    <td>{{item.price|currency:'EGP'}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.tag.name}}</td>
+                    <td>
+                        <span *ngFor="let cat of item.category">
+                           <span *ngIf="cat.name">{{cat.name}}</span>
+                           <span *ngIf="cat.name==''">No Data Available</span>
+                        </span>
+                    </td>
+                    <td>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu" class="rounded-3">
+                            <button mat-menu-item (click)=" openViewDialog('700ms','350ms',item)">
+                                <mat-icon class="text-success">visibility</mat-icon>
+                                <span>View</span>
+                            </button>
+                            <button mat-menu-item [routerLink]="['edit',item.id]">
+                                <mat-icon class="text-success">edit_square</mat-icon>
+                                <span>Edit</span>
+                            </button>
+                            <button mat-menu-item (click)="openDialog('500ms', '250ms',item.id,'rec')">
+                                <mat-icon class="text-success" mat-raised-button>delete</mat-icon>
+                                <span>Delete</span>
+                            </button>
+                          </mat-menu>
+                          
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<div class="d-flex justify-content-center">
+    <mat-paginator #paginator
+    class="demo-paginator"
+    (page)="handlePageEvent($event)"
+    [length]="totalData"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+    [pageIndex]="pageNumber"
+    aria-label="Select page">
+</mat-paginator>
+</div>
+
+</section>

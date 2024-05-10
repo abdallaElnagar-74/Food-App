@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ResetpassComponent } from '../resetpass/resetpass.component';
 import { DialogRef } from '@angular/cdk/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService,public dialog: MatDialog , private _ToastrService:ToastrService){}
+  constructor(private _FormBuilder:FormBuilder,private _AuthService:AuthService,public dialog: MatDialog , private _ToastrService:ToastrService,private _Router:Router){}
   eye:boolean=true;
   loading:boolean=false
   loginForm:FormGroup = this._FormBuilder.group({
@@ -34,7 +35,14 @@ export class LoginComponent {
       console.log(resp);
       localStorage.setItem("tokenOfUser",resp.token)
       this._AuthService.getDecodedInfo()
+      if(this._AuthService.role=="SystemUser"){
+        this._Router.navigate(['/dashboard/user'])
+      }
+      else if (this._AuthService.role=="SuperAdmin"){
+        this._Router.navigate(['/dashboard/admin'])
+      }
       this.loading=false
+
     },
     error:(err)=>{
       console.log(err);

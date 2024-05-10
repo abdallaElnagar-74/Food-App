@@ -44,4 +44,7 @@ forgotPass(data:object):Observable<any>{
 resetPassword(data:object):Observable<any>{
   return this._HttpClient.post('Users/Reset',data)
 }
+updatePassword(data:object):Observable<any>{
+  return this._HttpClient.put('Users/ChangePassword',data)
+}
 }

@@ -15,6 +15,7 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
 import {MatButtonModule} from '@angular/material/button';
 import { VerifyComponent } from './components/verify/verify.component';
 import { ResetpassComponent } from './components/resetpass/resetpass.component';
+import { UpdatepassComponent } from './components/updatepass/updatepass.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ResetpassComponent } from './components/resetpass/resetpass.component';
     LoginComponent,
     RegisterComponent,
     VerifyComponent,
-    ResetpassComponent
+    ResetpassComponent,
+    UpdatepassComponent,
   ],
   imports: [
     CommonModule,

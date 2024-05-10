@@ -1,0 +1,26 @@
+.header{
+    background-image: url('../../../assets/images/header-bg-svg.svg');
+    background-repeat: no-repeat;
+    background-color: rgb(0,146,71);
+}
+.content{
+    background-color: rgba(240, 255, 239, 1);
+    h1{
+        font-size: 24px;
+        font-weight: 600;
+    }
+    span{
+        color: rgba(0, 146, 71, 1);
+    }
+    p{
+        color: rgba(31, 38, 62, 1);
+        font-size: 16px;
+        font-weight: 400;
+    }
+    button{
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 1);
+        background-color: rgba(0, 146, 71, 1);
+    }
+}

@@ -1,0 +1,39 @@
+<section class="p-3">
+    <form action="" [formGroup]="updateForm" (ngSubmit)="updateUser()">
+        <div class="d-flex justify-content-center mb-2">
+            <ngx-dropzone (change)="onSelect($event)" [multiple]="false" class="drop">
+                <ngx-dropzone-label><i class="fa-solid fa-upload"></i> Upload Your Image</ngx-dropzone-label>
+                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+                  <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                </ngx-dropzone-image-preview>
+               </ngx-dropzone>
+        </div>
+        <mat-form-field class="w-100" appearance="outline">
+            <input type="text" matInput formControlName="userName">
+            <mat-label>User Name</mat-label>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <input type="email" matInput formControlName="email">
+            <mat-label>Email</mat-label>
+        </mat-form-field>
+      <div class="d-flex justify-content-between">
+        <mat-form-field class="w-100 me-2" appearance="outline">
+            <input type="text" matInput formControlName="country">
+            <mat-label>Country</mat-label>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+            <input type="tel" matInput formControlName="phoneNumber">
+            <mat-label>Phone</mat-label>
+        </mat-form-field>
+      </div>
+        <mat-form-field class="w-100" appearance="outline">
+            <input type="password" matInput formControlName="confirmPassword">
+            <mat-label>Confirm Password</mat-label>
+            <mat-error>Password Is Rrquired</mat-error>
+        </mat-form-field>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-outline-danger me-3" type="button" (click)="_DialogRef.close()">Cancel</button>
+        <button class="btn btn-outline-success">Save</button>
+    </div>
+    </form>
+</section>

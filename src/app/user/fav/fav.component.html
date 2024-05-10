@@ -1,0 +1,21 @@
+<section>
+<div class="row" *ngIf="recipeData.length>0 else name">
+    <h1 class="fw-bold m-0">Fav <span class="text-success">Recipes !</span></h1>
+    <div class="col-md-4" *ngFor="let item of recipeData">
+      <div class="cart shadow-sm rounded-top-4 rounded-bottom-4 p-3 cursor-pointer">
+        <div class="mb-2 position-relative" style="height: 300px;">
+            <img  [src]="imgUrl+item.recipe.imagePath" class="w-100 h-100" alt="">
+            <span class="badge p-2 bg-white text-success position-absolute">{{item.recipe.price| currency}}</span>
+        </div>
+        
+        <h1 class="m-0 mb-1"><span class="fw-semibold">Dish Name : </span> <span class="text-success">{{item.recipe.name}}</span></h1>
+        <h3><span class="fw-semibold h4">Classificaion : </span> <span class="h5">{{item.recipe.tag.name}}</span></h3>
+        <button class="btn btn-outline-danger w-75 d-block mx-auto" (click)="delete(item.id)">Delete <i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>
+</div>
+<ng-template #name>
+    <h1 class="fw-bold text-center mt-5">No Data Exist</h1>
+</ng-template>
+
+</section>

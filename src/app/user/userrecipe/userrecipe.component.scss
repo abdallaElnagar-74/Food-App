@@ -1,0 +1,19 @@
+.badge{
+  inset-block-start: 1% !important;
+  inset-inline-end: 1% !important;
+}
+.buton{
+    transform: translateY(200%);
+    transition: all .7s;
+}
+.cart{
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all .5s;
+    &:hover .buton{
+        transform: translateY(0);
+    }
+    &:hover{
+        border: 2px solid  #4AA35A;
+    }
+}

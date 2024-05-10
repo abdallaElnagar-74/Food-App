@@ -1,0 +1,26 @@
+<section class="p-3">
+    <table class="table text-center">
+        <thead class="">
+            <th class="rounded-start-2">
+                ID
+            </th>
+            <th class="">
+                Name
+            </th>
+            <th>
+                Creation Date
+            </th>
+            <th class="rounded-end-2">
+                Modification Date
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{reposze.id}}</td>
+                <td>{{reposze.name}}</td>
+                <td>{{reposze.creationDate |date:'dd/mm/yy hh:mm a'}}</td>
+                <td>{{reposze.modificationDate|date:'dd/mm/yy hh:mm a'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>

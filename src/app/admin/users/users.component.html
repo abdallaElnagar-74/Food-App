@@ -1,0 +1,110 @@
+<section>
+    <div class="head row justify-content-between align-items-centerss my-3 p-3 rounded-3">
+        <div class="col-md-8">
+            <h1 class="m-0">Users <span>List</span></h1>
+            <p class="mt-2">You can now add your items that any user can order it from the Application and you can edit</p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-end">
+            <img src="../../../assets/images/Group 48102127.svg" alt="">
+        </div>
+    </div>
+    <div class="middle">
+        <h1 class="m-0 fw-semibold">Users Table Details</h1>
+        <p>You can check all details</p>
+    </div>
+    <div class="table-datass">
+        <div class="row">
+            <div class="col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Search By</mat-label>
+                <mat-select [(ngModel)]="searchParam">
+                    <mat-option value="userName">
+                      Name
+                    </mat-option>
+                    <mat-option value="email">
+                        Email
+                    </mat-option>
+                    <mat-option value="country">
+                        Country
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Search field</mat-label>
+                    <input matInput placeholder="Placeholder" [(ngModel)]="searchValue" (keyup.enter)="getUsers()">
+                  </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Search By Role</mat-label>
+                    <mat-select [(ngModel)]="role" (selectionChange)="getUsers()" multiple="">
+                        <!-- <mat-option value="0">
+                          All
+                        </mat-option> -->
+                        <mat-option value="1">
+                            Admin
+                        </mat-option>
+                        <mat-option value="2">
+                            User
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+            </div>
+        </div>
+       <table class="table table-striped text-center">
+        <thead class="">
+            <th class="rounded-start-3">Name</th>
+            <th>Image</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Country</th>
+            <th>Role</th>
+            <th class="rounded-end-3">Info</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of userData">
+                <!-- <td>asdas</td>
+                <td>asdad</td>
+                <td>sadsad</td>
+                <td>Abda</td>      
+                <td>Abda</td>      
+                <td>Abda</td>       -->
+                <td>{{item.userName}}</td>
+                <td class="w-25"><img class="w-25" [src]="imgUrl+item.imagePath" alt=""></td>
+                <td>{{item.email}}</td>
+                <td>{{item.phoneNumber}}</td>
+                <td>{{item.country}}</td>      
+                <td>{{item.group.name}}</td>    
+                <td>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu" class="rounded-3">
+                        <button mat-menu-item (click)="openDialog('700ms', '350ms',item)">
+                            <mat-icon class="text-success">visibility</mat-icon>
+                            <span>View</span>
+                        </button>
+                        <button mat-menu-item (click)="openDeleteDialog('700ms','350ms',item.id,'del')">
+                            <mat-icon class="text-success" mat-raised-button>delete</mat-icon>
+                            <span>Delete</span>
+                        </button>
+                      </mat-menu>
+                </td>  
+            </tr>
+        </tbody>
+       </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <mat-paginator #paginator
+        class="demo-paginator"
+        (page)="handlePageEvent($event)"
+        [length]="totalRecords"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+        [pageIndex]="pageNum"
+        aria-label="Select page">
+    </mat-paginator>
+</div>
+</section>

@@ -1,0 +1,23 @@
+.bg-nav{
+    background-color: rgba(248, 249, 251, 1) !important;
+}
+nav{
+    i{
+        color: rgba(47, 49, 63, 1);
+    }
+}
+.search{
+    input{
+        padding-inline-start: 25px;
+        &::placeholder{
+            color :darkgrey !important;
+        }
+    }
+    i{
+        inset-inline-start: 2%;
+    }
+}
+.foto{
+    width: 50px !important;
+    height: 50px !important;
+}

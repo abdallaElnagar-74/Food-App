@@ -1,0 +1,17 @@
+<section class="overflow-x-hidden">
+    <div class="mt-3 me-1 d-flex justify-content-end"><i (click)="_DialogRef.close()" class="fa-solid text-danger fa-circle-xmark fa-xl"></i>
+    </div>
+    <div class="row justify-content-center overflow-x-hidden">
+        <div class="col-md-8">
+            <img class="w-100" [src]="imgUrl+data.imagePath" alt="">
+            <h4 class="m-0 my-2"><span class="fw-bold">Name : </span>{{data.name}}</h4>
+            <p><span class="fw-bold">Creation Date is : </span> {{data.creationDate | date:'dd/mm/yy hh:mm a'}}</p>
+            <p><span class="fw-bold">Price : </span> {{data.price}}</p>
+            <p><span class="fw-bold">Tag : </span> {{data.tag.name}}</p>
+            <p><span class="fw-bold">Category : </span> <span *ngFor="let items of data.category">
+                <span>{{items.name}}</span>
+            </span></p>
+            <p><span class="fw-bold">Description : </span> {{data.description}}</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,41 @@
+.title{
+    background-image: url('../../../assets/images/header-bg-svg.svg');
+    background-repeat: no-repeat;
+    background-color: rgb(0,146,71);
+    h1{
+        font-size: 40px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 1);
+        span{
+            font-size: 32;
+            font-weight: 400;
+            color: rgba(223, 224, 224, 1);
+        }
+    }
+    p{
+        font-size: 16px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+    }
+}
+.middle{
+    h1{
+        font-size: 20px;
+        font-weight: 500;
+        color: rgba(31, 38, 62, 1)
+    }
+    p{
+        font-size:14px ;
+        font-weight: 400;
+        color: rgba(50, 60, 71, 1);
+    }
+}
+thead{
+    background-color: rgba(226, 229, 235, 1);
+    font-size: 16px;
+    color: rgba(31, 38, 62, 1);
+    font-weight: 500;
+    th{
+        padding-block: 20px;
+    }
+}
