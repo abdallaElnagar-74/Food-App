@@ -1,8 +1,8 @@
  <div class="row container-fluid">
-        <div class="ps-0" [class]="view?'col-2':'col-1'">
+        <div class="ps-0 side" [class]="view?'col-2':'col-1'">
             <app-sidebar (sidebarEvent)="viewBar()"></app-sidebar>
         </div>
-        <div class="" [class]="view?'col-10':'col-11'">
+        <div class="main" [class]="view?'col-10':'col-11'">
           <div class="">
             <app-navbar></app-navbar>
             <router-outlet></router-outlet>
