@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdatepassComponent } from 'src/app/auth/components/updatepass/updatepass.component';
 import { menu } from 'src/app/auth/interfaces/dashboard';
@@ -11,6 +11,11 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class SidebarComponent {
   constructor(private _AuthService:AuthService,public dialog: MatDialog){}
+  @Output() sidebarEvent = new EventEmitter<any>; 
+  words:boolean = false
+  changeView(){
+    this.sidebarEvent.emit(this.words =! this.words)
+  }
   isUser():boolean{
     return true ? this._AuthService.role == "SystemUser" : false
   }

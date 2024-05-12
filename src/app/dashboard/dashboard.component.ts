@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  view : boolean = false
+  viewBar () :boolean{
+    return this.view =! this.view
+  }
 }

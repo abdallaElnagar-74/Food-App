@@ -44,6 +44,7 @@
                           (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                       </mat-select-trigger> -->
+                      <mat-option value="0">All</mat-option>
                       <mat-option *ngFor="let item of tags" [value]="item.id">{{item.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -58,6 +59,7 @@
                           (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                       </mat-select-trigger> -->
+                      <mat-option value="0">All</mat-option>
                       <mat-option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</mat-option>
                     </mat-select>
                   </mat-form-field>

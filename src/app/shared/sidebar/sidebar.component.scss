@@ -1,16 +1,18 @@
 .main{
     border-radius:0 58px 0 0 ;
     background-color: rgba(31, 38, 62, 1);
-    transition: all .7s ease;
+   
 }
 a{
     width: 100%;
+    transition: all 1s ease;
 }
 li{
     padding-block: 10px;
     padding-inline: 10px;
     margin-bottom: 10px;
     position: relative;
+    transition: all 1s ease;
     &:hover::before{
         height: 100%;
     }
@@ -25,6 +27,7 @@ li{
 }
 }
 .active-link{
+    
     background-color: rgba(0, 146, 71, 0.1);
     padding-block: 10px;
     padding-inline: 10px;

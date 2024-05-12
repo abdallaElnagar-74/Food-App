@@ -1,18 +1,18 @@
 <section class="h-100 main">
-    <div class="foto"><img src="./assets/images/3.svg" class="w-75" alt=""></div>
+    <div class="foto cursor-pointer" (click)="changeView()"><img src="./assets/images/3.svg" class="" [class]="words?'w-75':'w-100'" alt=""></div>
 <div>
     <ul class="px-0">
             <li class="d-flex align-items-center container mt-4" routerLinkActive="active-link">
                 <a class="text-decoration-none" routerLink="/dashboard/home">
                  <span class="ikon"><i class="me-2 fa-solid fa-home"></i></span>
-                 <span class="text-white">Home</span>
+                 <span class="text-white" *ngIf="words">Home</span>
                 </a>
              </li>
      <ng-container *ngFor="let item of menu">
         <li class="d-flex align-items-center container  " *ngIf="item.isActive" routerLinkActive="active-link">
             <a href="#" class="text-decoration-none" [routerLink]="item.link">
              <span class=""><i class="me-2" [class]="item.icon"></i></span>
-             <span class="text-white">{{item.title}}</span>
+             <span *ngIf="words" class="text-white">{{item.title}}</span>
             </a>
          </li>
      </ng-container>
