@@ -3,14 +3,14 @@
 <div>
     <ul class="px-0">
             <li class="d-flex align-items-center container mt-4" routerLinkActive="active-link">
-                <a class="text-decoration-none" routerLink="/dashboard/home">
+                <a class="text-decoration-none" [class]="words?'':'text-center'" routerLink="/dashboard/home">
                  <span class="ikon"><i class="me-2 fa-solid fa-home"></i></span>
                  <span class="text-white" *ngIf="words">Home</span>
                 </a>
              </li>
      <ng-container *ngFor="let item of menu">
         <li class="d-flex align-items-center container  " *ngIf="item.isActive" routerLinkActive="active-link">
-            <a href="#" class="text-decoration-none" [routerLink]="item.link">
+            <a href="#" class="text-decoration-none" [class]="words?'':'text-center'" [routerLink]="item.link">
              <span class=""><i class="me-2" [class]="item.icon"></i></span>
              <span *ngIf="words" class="text-white">{{item.title}}</span>
             </a>
